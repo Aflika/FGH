@@ -1,0 +1,149 @@
+local Library = loadstring(game:HttpGet("https://pastebin.com/raw/vff1bQ9F"))()
+local Window = Library.CreateLib("Westbound V1", "Ocean")
+
+-- Tabs
+
+local Tab1 = Window:NewTab("Player")
+local Tab1Section = Tab1:NewSection("Player")
+local Tab2 = Window:NewTab("AutoFarm")
+local Tab2Section = Tab2:NewSection("Tidak bisa dimatiin")
+local Tab3 = Window:NewTab("Teleport")
+local Tab3Section = Tab3:NewSection("Bagian Luar (Map)")
+
+-- Tab1
+
+Tab1Section:NewButton("Silent Aim (Only Gun)", "Hanya Manusia", function()
+    local Camera = game:GetService("Workspace").CurrentCamera
+local Players = game:GetService("Players")
+local LocalPlayer = game:GetService("Players").LocalPlayer
+
+local function GetClosestPlayer()
+   local ClosestPlayer = nil
+   local FarthestDistance = math.huge
+
+   for i, v in pairs(Players.GetPlayers(Players)) do
+       if v ~= LocalPlayer and v.Character and v.Character.FindFirstChild(v.Character, "HumanoidRootPart") then
+           local DistanceFromPlayer = (LocalPlayer.Character.HumanoidRootPart.Position - v.Character.HumanoidRootPart.Position).Magnitude
+
+           if DistanceFromPlayer < FarthestDistance then
+               FarthestDistance = DistanceFromPlayer
+               ClosestPlayer = v
+           end
+       end
+   end
+
+   if ClosestPlayer then
+       return ClosestPlayer
+   end
+end
+
+local GameMetaTable = getrawmetatable(game)
+local OldGameMetaTableNamecall = GameMetaTable.__namecall
+setreadonly(GameMetaTable, false)
+
+GameMetaTable.__namecall = newcclosure(function(object, ...)
+   local NamecallMethod = getnamecallmethod()
+   local Arguments = {...}
+
+   if tostring(NamecallMethod) == "FindPartOnRayWithIgnoreList" then
+       local ClosestPlayer = GetClosestPlayer()
+       
+       if ClosestPlayer and ClosestPlayer.Character then
+           Arguments[1] = Ray.new(Camera.CFrame.Position, (ClosestPlayer.Character.Head.Position - Camera.CFrame.Position).Unit * (Camera.CFrame.Position - ClosestPlayer.Character.Head.Position).Magnitude)
+       end
+   end
+
+   return OldGameMetaTableNamecall(object, unpack(Arguments))
+end
+
+setreadonly(GameMetaTable, true)
+
+end)
+
+Tab1Section:NewButton("No Fall Damage", "Anti Fall Damage", function()
+    game.Workspace[Hikiw321].FallDamage:Destroy()
+end)
+
+Tab1Section:NewButton("Inf Jumps", "Enables Inf Jumps", function()
+    local InfiniteJumpEnabled = true
+game:GetService("UserInputService").JumpRequest:connect(function()
+	if InfiniteJumpEnabled then
+		game:GetService"Players".LocalPlayer.Character:FindFirstChildOfClass'Humanoid':ChangeState("Jumping")
+	end
+end)
+
+Tab1Section:NewSlider("Speed", "Lari Cepat", 250, 120, function(v)
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = v
+end)
+
+-- Tab2
+
+Tab2Section:NewButton("Auto Rob", "Klik=Start", function()
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/Mapple7777/WestboundAutofarm/main/WestboundAutofarmV2.lua'))()
+    
+end)
+    
+local Tab2Section = Tab2:NewSection("Lainnya (Gui)")
+
+Tab2Section:NewButton("GUI V1", "Memunculkan Gui", function()
+     loadstring(game:HttpGet(("https://raw.githubusercontent.com/Drifter0507/scripts/main/westbound"),true))()
+
+end)
+
+-- Tab3
+
+Tab3Section:NewButton("Tumbleweed", "Teleport Ke Tujuan", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new
+end)
+
+Tab3Section:NewButton("Grayridge", "Teleport Ke Tujuan", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new
+end)
+
+Tab3Section:NewButton("Stone Creek", "Teleport Ke Tujuan", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new
+end)
+
+Tab3Section:NewButton("Fort Arthur", "Teleport Ke Tujuan", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new
+end)
+
+Tab3Section:NewButton("Fort Assid", "Teleport Ke Tujuan", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new
+end)
+
+Tab3Section:NewButton("Tambang Besar", "Teleport Ke Tujuan", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new
+end)
+
+Tab3Section:NewButton("Red Rock Camp", "Teleport Ke Tujuan", function()
+   game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1636.62537, 104.349976, -1736.184)
+end)
+
+local Tab3Section = Tab3:NewSection("Teleport Ke Bank (Map)")
+
+Tab3Section:NewButton("Tumbleweed", "Teleport Ke Tujuan", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new
+end)
+
+Tab3Section:NewButton("Grayridge", "Teleport Ke Tujuan", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new
+end)
+
+Tab3Section:NewButton("Stone Creek", "Teleport Ke Tujuan", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new
+end)
+
+local Tab3Section = Tab3:NewSection("Teleport Ke Harta Karun (Map)")
+
+Tab3Section:NewButton("Harta Karun #1", "Teleport Ke Tujuan", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new
+end)
+
+Tab3Section:NewButton("Harta Karun #2", "Teleport Ke Tujuan", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new
+end)
+
+Tab3Section:NewButton("Harta Karun #3", "Teleport Ke Tujuan", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new
+end)
