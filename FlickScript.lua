@@ -4,7 +4,7 @@ local ProtectionConfig = {
     -- 🔴 CRITICAL: This MUST exactly match the 'Secret' value in your Key System's Config!
     -- If your Key System has: Secret = "Test"
     -- Then this must also be: SecretKey = "Test"
-    SecretKey = "FlickSecretKeyistaens321",
+    SecretKey = "test",
     
     -- The name of your Hub (shown in the kick message if they try to bypass)
     HubName = "FLICK"
