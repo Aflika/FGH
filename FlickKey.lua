@@ -20,7 +20,7 @@ local Config = {
     PlatoSecret     = "d482cdf1-8849-4b1f-8d3e-08b80400dfe2", -- Your PlatoBoost Secret Key
 
     -- [2] Anti-Bypass / Global Secret Variable
-    Secret          = "1234", -- This makes the script ONLY run from the key script. Even if they copy the original obfuscated script to bypass the key, they won't be able to!
+    Secret          = "taens321", -- This makes the script ONLY run from the key script. Even if they copy the original obfuscated script to bypass the key, they won't be able to!
     
     -- [3] Scripts & Links
     MainScriptURL   = "https://raw.githubusercontent.com/Aflika/FGH/refs/heads/main/FlickScript.lua", -- The raw URL of your main script
